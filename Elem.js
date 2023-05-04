@@ -1,39 +1,27 @@
-class Elem{
-    
-    
-    #adat;
+class Elem {
+  constructor(szuloElem, index) {
+    this.index = index;
 
-    constructor(adat, szuloELEM){
-        
-        this.adat=adat;
+    szuloElem.append("<div class='elem'><p></p></div>");
 
-        
-        szuloELEM.append(`
-        <div class="elem"> 
-        <h3>${this.#adat}</h3>
-        <p>${this.elem()}</p>
-        </div>
-        `)
-        this.szuloELEM=$(".szemely:last-child");
-        console.log(this.adat);
-        this.szuloELEM.on("click", function(){
-            console.log(this);
-        })
+    this.divElem = $("article div:last-child");
 
-        this.szuloELEM.on("click", ()=>{
-            console.log(this);
-        })
-    }
-    getElemek(){
-        return this.#adat;
-    }
-    setElemek(){
-        this.#adat=ujadat;
-    }
-    
+    this.pElem = $("article div:last-child p");
 
- 
+    this.divElem.on("click", () => {
+      //this.pElem.text("X");
+      this.esemenyTrigger();
+      
+    });
+  }
 
+  setElem(ertek) {
+    this.pElem.text(ertek);
+  }
+  esemenyTrigger() {
+    const esemeny = new CustomEvent("elemKattintas", { detail: this });
+    window.dispatchEvent(esemeny);
+  }
 }
 
-export default Elem;  
+export default Elem;

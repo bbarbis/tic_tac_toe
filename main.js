@@ -1,7 +1,5 @@
-import Elem from "./Elem.js";
+import Jatekter from "./Jatekter.js";
+
 $(function(){
-const szuloELEM=$(".tarolo");
-    
-
-
+   new Jatekter()
 });
